@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './db.js'
 import productRoutes from './routes/productRoutes.js'
+import phoneRoutes from './routes/phoneRoutes.js'
 
 dotenv.config();
 connectDB();
@@ -14,6 +15,7 @@ app.get('/', (req,res) => {
 })
 
 app.use('/api/products', productRoutes)
+app.use('/api/phones', phoneRoutes)
 
 const PORT = process.env.PORT || 5000
 
