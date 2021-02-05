@@ -39,7 +39,7 @@ const addPhone = async(req,res) => {
       img: phone.img,
       cpu: phone.cpu,
       storage: phone.storage,
-      camera: hone.camera,
+      camera: phone.camera,
       size: phone.size,
       battery: phone.battery,
       price: phone.price,
