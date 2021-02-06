@@ -20,7 +20,7 @@ const showPhone = async(req,res) => {
 
 //Add phone
 const addPhone = async(req,res) => {
-  const {series, model, description, img, cpu, storage, camera, size, battery, price} = req.body;
+  const {series, model, description, img, cpu,ram, storage, camera, size, battery, price} = req.body;
 
   const phoneExists = await Phone.findOne({model})
   if(phoneExists){
@@ -28,7 +28,7 @@ const addPhone = async(req,res) => {
   }
 
   const phone = await Phone.create({
-    series, model, description, img, cpu, storage, camera, size, battery, price
+    series, model, description, img, cpu,ram, storage, camera, size, battery, price
   })
 
   if(phone){
@@ -38,6 +38,7 @@ const addPhone = async(req,res) => {
       description: phone.description,
       img: phone.img,
       cpu: phone.cpu,
+      ram: phone.ram,
       storage: phone.storage,
       camera: phone.camera,
       size: phone.size,
@@ -52,7 +53,7 @@ const addPhone = async(req,res) => {
 
 //Edit phone
 const editPhone = async(req,res) => {
-  const {series, model, description, img, cpu, storage, camera, size, battery, price} = req.body
+  const {series, model, description, img, cpu,ram, storage, camera, size, battery, price} = req.body
 
   const phone = await Phone.findById(req.params.id)
 
@@ -62,18 +63,19 @@ const editPhone = async(req,res) => {
     phone.description = description
     phone.img = img
     phone.cpu = cpu
+    phone.ram = ram
     phone.storage = storage
     phone.camera = camera
     phone.size = size
     phone.battery = battery
     phone.price = price
 
-    const updatedProduct = await product.save()
-    res.json(updatedProduct)
+    const updatedPhone = await phone.save()
+    res.json(updatedPhone)
   }
   else {
     res.status(404)
-    throw new Error('Product not found')
+    throw new Error('Phonenot found')
   }
   
 }
