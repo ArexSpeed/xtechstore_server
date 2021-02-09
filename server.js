@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import connectDB from './db.js'
 import productRoutes from './routes/productRoutes.js'
 import phoneRoutes from './routes/phoneRoutes.js'
+import ultrabookRoutes from './routes/ultrabookRoutes.js'
 
 dotenv.config();
 connectDB();
@@ -16,6 +17,7 @@ app.get('/', (req,res) => {
 
 app.use('/api/products', productRoutes)
 app.use('/api/phones', phoneRoutes)
+app.use('/api/ultrabooks', ultrabookRoutes)
 
 const PORT = process.env.PORT || 5000
 

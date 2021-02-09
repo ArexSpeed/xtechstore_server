@@ -5,11 +5,11 @@ const getPhones = async(req,res) => {
   const phones = await Phone.find({})
   res.json(phones)
 }
-// Show one team
+// Show one phone
 const showPhone = async(req,res) => {
   const phone = await Phone.findById(req.params.id)
   if(phone){
-    res.status(201).json(team)
+    res.status(201).json(phone)
   }
   else{
     res.status(400)
