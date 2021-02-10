@@ -70,7 +70,7 @@ const editUltrabook = async(req,res) => {
     ultrabook.battery = battery
     ultrabook.price = price
 
-    const updatedUltrabook = await Ultrabook.save()
+    const updatedUltrabook = await ultrabook.save()
     res.json(updatedUltrabook)
   }
   else {
@@ -84,7 +84,7 @@ const deleteUltrabook = async (req, res) => {
   const ultrabook = await Ultrabook.findById(req.params.id)
 
   if (ultrabook) {
-    await Ultrabook.remove()
+    await ultrabook.remove()
     res.json({ message: 'Product removed' })
   } else {
     res.status(404)
