@@ -25,7 +25,7 @@ const addAccessory = async (req, res) => {
 
   const accessory = await Accessory.create({name, description, price, img})
 
-  if(accesory){
+  if(accessory){
     res.status(201).json({
       name: accessory.name,
       description: accessory.description,
