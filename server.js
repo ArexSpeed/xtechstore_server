@@ -6,6 +6,7 @@ import phoneRoutes from './routes/phoneRoutes.js'
 import ultrabookRoutes from './routes/ultrabookRoutes.js'
 import watchRoutes from './routes/watchRoutes.js'
 import tabletRoutes from './routes/tabletRoutes.js'
+import accessoryRoutes from './routes/accessoryRoutes.js'
 
 dotenv.config();
 connectDB();
@@ -22,6 +23,7 @@ app.use('/api/phones', phoneRoutes)
 app.use('/api/ultrabooks', ultrabookRoutes)
 app.use('/api/watches', watchRoutes)
 app.use('/api/tablets', tabletRoutes)
+app.use('/api/accessories', accessoryRoutes)
 
 const PORT = process.env.PORT || 5000
 
