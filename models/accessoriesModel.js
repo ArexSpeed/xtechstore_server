@@ -2,6 +2,9 @@ import mongoose from 'mongoose'
 
 const accessorySchema = mongoose.Schema(
   {
+    series: {
+      type: String
+    },
     name: {
       type: String
     },

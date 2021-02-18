@@ -22,11 +22,6 @@ const showTablet = async(req,res) => {
 const addTablet = async(req,res) => {
   const {series, model, description, img, cpu,ram, storage, camera, size, battery, price} = req.body;
 
-  const tabletExists = await Tablet.findOne({model})
-  if(tabletExists){
-    throw new Error('tablet is already exists')
-  }
-
   const tablet = await Tablet.create({
     series, model, description, img, cpu,ram, storage, camera, size, battery, price
   })

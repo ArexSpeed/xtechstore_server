@@ -21,12 +21,13 @@ const showAccessory = async(req,res) => {
 
 // Add sccessory
 const addAccessory = async (req, res) => {
-  const {name, description, price, img} = req.body
+  const {series,name, description, price, img} = req.body
 
-  const accessory = await Accessory.create({name, description, price, img})
+  const accessory = await Accessory.create({series,name, description, price, img})
 
   if(accessory){
     res.status(201).json({
+      series: accessory.series,
       name: accessory.name,
       description: accessory.description,
       price: accessory.price,
@@ -41,10 +42,11 @@ const addAccessory = async (req, res) => {
 
 // edit accessory
 const editAccessory = async (req,res) => {
-  const {name, description, price, img} = req.body
+  const {series,name, description, price, img} = req.body
   const accessory = await Accessory.findById(req.params.id)
 
   if(accessory){
+    accessory.series = series
     accessory.name = name
       accessory.description = description
       accessory.price = price

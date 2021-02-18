@@ -22,11 +22,6 @@ const showUltrabook = async(req,res) => {
 const addUltrabook = async(req,res) => {
   const {series, model, description, img, cpu,ram, storage, camera, size, battery, price} = req.body;
 
-  const ultrabookExists = await Ultrabook.findOne({model})
-  if(ultrabookExists){
-    throw new Error('ultrabook is already exists')
-  }
-
   const ultrabook = await Ultrabook.create({
     series, model, description, img, cpu,ram, storage, camera, size, battery, price
   })
