@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import path from 'path'
 import connectDB from './db.js'
 import bodyParser from 'body-parser'
 import cors from 'cors'
@@ -21,9 +22,6 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true, parameterLimit:500
 
 app.use(cors())
 
-app.get('/', (req,res) => {
-  res.send('Api is running')
-})
 
 app.use('/api/products', productRoutes)
 app.use('/api/phones', phoneRoutes)
@@ -31,6 +29,17 @@ app.use('/api/ultrabooks', ultrabookRoutes)
 app.use('/api/watches', watchRoutes)
 app.use('/api/tablets', tabletRoutes)
 app.use('/api/accessories', accessoryRoutes)
+
+const __dirname = path.resolve()
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname, '/client/build')))
+
+  app.get('*', (req,res) => res.sendFile(pat.resolve(__dirname, 'client', 'build', 'index.html')))
+}else{
+  app.get('/', (req,res) => {
+    res.send('Api is running')
+  })
+}
 
 const PORT = process.env.PORT || 5000
 
