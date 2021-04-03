@@ -1,6 +1,9 @@
+
 # XTech Store
 
 Project are available on https://xtechstore.herokuapp.com/
+
+![xtech2](https://user-images.githubusercontent.com/62649296/113473776-f81d1880-946b-11eb-8f6d-255aca7b39a3.png)
 
 ## Description
 
